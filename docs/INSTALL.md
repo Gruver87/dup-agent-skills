@@ -43,10 +43,12 @@ Install via Cursor Plugins UI pointing at this folder, or clone + open as plugin
 
 MCP is **read-only** — no place-order / no auto-enable / no futures.
 
-## Validate
+## Validate / test gate
 
 ```powershell
-python scripts\validate_skills.py
+.\scripts\test_all.ps1              # sync + validate + ruff + pytest
+.\scripts\test_all.ps1 -WithLab     # + radar_mcp_lab (SKIP if radar down)
+python scripts\validate_skills.py   # skills-only
 ```
 
-CI runs the same gate on every push.
+CI runs validate + ruff + pytest on every push.

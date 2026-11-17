@@ -1,0 +1,9 @@
+# Cross-platform: Windows checkouts lack +x; scripts are invoked via `python …`.
+target-version = "py311"
+line-length = 100
+
+[lint]
+ignore = ["EXE001"]
+
+[lint.per-file-ignores]
+"scripts/*" = ["EXE001"]

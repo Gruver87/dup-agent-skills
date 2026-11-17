@@ -1,7 +1,9 @@
 # DUP Agent Skills — Market Ops
 
+[![ci](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml)
+
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Version:** `0.1.0` · **Standard:** [Agent Skills](https://agentskills.io/specification)
+**Version:** `0.1.1` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
@@ -34,12 +36,12 @@ See [`docs/INSTALL.md`](docs/INSTALL.md).
 ```powershell
 git clone https://github.com/Gruver87/dup-agent-skills.git
 cd dup-agent-skills
-.\scripts\sync_agents_skills.ps1
-python scripts\validate_skills.py
+.\scripts\test_all.ps1
 ```
 
 **Cursor plugin:** open this repo / point Plugins UI at `.cursor-plugin/plugin.json`.  
-**User skills:** `.\scripts\install_user_skills.ps1`
+**User skills:** `.\scripts\install_user_skills.ps1`  
+**Walkthrough:** [`docs/DEMO.md`](docs/DEMO.md)
 
 ## MCP (read-only)
 
@@ -49,8 +51,8 @@ Tools: `radar_health`, `radar_ready`, `radar_snapshot_summary`, `radar_metrics_u
 No place-order / no auto-enable / no futures.
 
 ```powershell
-pip install -e ./packages/radar_mcp
-python scripts\radar_mcp_lab.py
+.\scripts\test_all.ps1 -WithLab
+# or: python scripts\radar_mcp_lab.py
 ```
 
 ## Honesty
@@ -59,7 +61,7 @@ python scripts\radar_mcp_lab.py
 - Lab smoke ≠ mainnet  
 - Futures auto always out of scope  
 
-[`docs/DISCLAIMER.md`](docs/DISCLAIMER.md) · [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/EXAMPLES.md`](docs/EXAMPLES.md)
+[`docs/DISCLAIMER.md`](docs/DISCLAIMER.md) · [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/EXAMPLES.md`](docs/EXAMPLES.md) · [`docs/INSTALL.md`](docs/INSTALL.md)
 
 ## License
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-11-17
+
+- Fix CI ruff `EXE001` (Windows shebang / non-executable) via `ruff.toml`.
+- Add `scripts/test_all.ps1` one-shot local gate.
+- Add `docs/DEMO.md` + CI badge in README.
+
 ## 0.1.0 — 2026-11-17
 
 - Spec-aligned Agent Skills (license, rich descriptions, references, refuse sections).
