@@ -22,7 +22,8 @@ python scripts\validate_skills.py
 .\scripts\install_user_skills.ps1
 ```
 
-Copies into `%USERPROFILE%\.agents\skills\` (and `.cursor\skills\` when present).
+Copies into `%USERPROFILE%\.agents\skills\` (and `.cursor\skills\` when present).  
+Folder names stay equal to skill `name` (no `dup-` prefix — that broke agentskills.io matching).
 
 ## C. Cursor Plugin
 

@@ -25,7 +25,7 @@ Canonical packs live in `skills/<name>/SKILL.md` (Agent Skills / agentskills.io)
 | `.cursor-plugin/plugin.json` | Cursor plugin manifest |
 | `mcp.json` | MCP server wiring |
 
-Version pin: **0.1.0**.
+Version pin: **0.1.2** (plugin / package semver).
 
 ## MCP `radar-ops`
 

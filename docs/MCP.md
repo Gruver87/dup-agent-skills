@@ -31,7 +31,7 @@ Repo root [`mcp.json`](../mcp.json):
 
 Optional: set `RADAR_API_KEY` in the MCP server env (process only — never commit).
 
-`${CURSOR_PLUGIN_ROOT}/...` PYTHONPATH is a fallback when the plugin is loaded without an editable install; prefer `install_mcp.ps1`.
+Root `mcp.json` runs `python -m radar_mcp` only — **requires** `.\scripts\install_mcp.ps1` first (no `CURSOR_PLUGIN_ROOT` PYTHONPATH dependency).
 
 ## Tools
 

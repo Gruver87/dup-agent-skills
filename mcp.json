@@ -4,8 +4,7 @@
       "command": "python",
       "args": ["-m", "radar_mcp"],
       "env": {
-        "RADAR_BASE_URL": "http://127.0.0.1:8787",
-        "PYTHONPATH": "${CURSOR_PLUGIN_ROOT}/packages/radar_mcp/src"
+        "RADAR_BASE_URL": "http://127.0.0.1:8787"
       }
     }
   }

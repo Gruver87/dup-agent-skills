@@ -2,9 +2,11 @@
 
 ## 0.1.2 — 2026-11-17
 
-- `scripts/install_mcp.ps1` — editable pip install for Windows MCP without fragile PYTHONPATH-only setups.
-- `docs/MCP.md` — operator wiring for radar-ops tools.
-- Radar companion: document `link_agent_skills.ps1` / AGENT_SKILLS cross-link.
+- `scripts/install_mcp.ps1` — editable pip install; avoid WindowsApps stub via `py -3`.
+- `mcp.json` — `python -m radar_mcp` only (no `CURSOR_PLUGIN_ROOT` PYTHONPATH).
+- `install_user_skills.ps1` — keep folder names = skill `name` (remove legacy `dup-*` prefixes).
+- `docs/MCP.md` / ARCHITECTURE pin honesty **0.1.2**.
+- Radar companion: `link_agent_skills.ps1` / AGENT_SKILLS cross-link.
 
 ## 0.1.1 — 2026-11-17
 
