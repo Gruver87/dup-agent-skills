@@ -43,6 +43,8 @@ Root `mcp.json` runs `python -m radar_mcp` only — **requires** `.\scripts\inst
 | `radar_metrics_up` | GET `/api/metrics` |
 | `radar_trade_paper_status` | GET `/api/trade/paper` |
 | `radar_trade_status` | GET `/api/trade/status` (read-only; never toggles auto) |
+| `radar_telegram_status` | GET `/api/telegram/status` (no tokens) |
+| `radar_recovery_status` | GET `/api/ops/recovery` (not a soak claim) |
 
 Radar must be running (`dup-market-radar` → `.\scripts\run_radar.ps1`). If down → structured error / lab `SKIP` — no invented prices.
 

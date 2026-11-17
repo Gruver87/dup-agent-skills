@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6 — 2026-11-17
+
+- MCP: `radar_telegram_status` + `radar_recovery_status` (read-only; no tokens; not a soak claim).
+- `scripts/link_companions.ps1` — mirror skills into radar + trading-bot siblings.
+- Docs: INSTALL §G; package README tool list.
+
 ## 0.1.5 — 2026-11-17
 
 - MCP: read-only `radar_trade_status` (GET `/api/trade/status` — never toggles auto).

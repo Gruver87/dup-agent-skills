@@ -15,7 +15,9 @@ from radar_mcp.client import (
     summarize_metrics,
     summarize_paper,
     summarize_ready,
+    summarize_recovery,
     summarize_snapshot,
+    summarize_telegram,
     summarize_trade_status,
 )
 
@@ -86,6 +88,26 @@ def radar_trade_status() -> str:
 
     def _inner() -> dict[str, Any]:
         return summarize_trade_status(RadarClient().trade_status())
+
+    return _run(_inner)
+
+
+@mcp.tool()
+def radar_telegram_status() -> str:
+    """GET /api/telegram/status — bot/watches surface (no tokens)."""
+
+    def _inner() -> dict[str, Any]:
+        return summarize_telegram(RadarClient().telegram_status())
+
+    return _run(_inner)
+
+
+@mcp.tool()
+def radar_recovery_status() -> str:
+    """GET /api/ops/recovery — self-recovery supervisor (not a soak claim)."""
+
+    def _inner() -> dict[str, Any]:
+        return summarize_recovery(RadarClient().recovery_status())
 
     return _run(_inner)
 

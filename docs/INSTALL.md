@@ -65,6 +65,15 @@ cd ..\absolute-trading-bot-final
 Policy: [`PROTOCOL_STATUS`](https://github.com/Gruver87/absolute-trading-bot-final/blob/main/docs/PROTOCOL_STATUS.md) — v1 stopped, `SPOT_ENTRIES` off.  
 Bot docs: [`AGENT_SKILLS.md`](https://github.com/Gruver87/absolute-trading-bot-final/blob/main/docs/AGENT_SKILLS.md).
 
+## G. Link both companions at once
+
+```powershell
+cd C:\Users\vovun\Desktop\dup-agent-skills
+.\scripts\link_companions.ps1
+```
+
+Calls each sibling `link_agent_skills.ps1` (radar + trading bot). No soak / no live unlock.
+
 ## Validate / test gate
 
 ```powershell

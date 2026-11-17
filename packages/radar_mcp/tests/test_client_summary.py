@@ -14,7 +14,9 @@ from radar_mcp.client import (
     summarize_metrics,
     summarize_paper,
     summarize_ready,
+    summarize_recovery,
     summarize_snapshot,
+    summarize_telegram,
     summarize_trade_status,
 )
 
@@ -71,6 +73,21 @@ def test_summarize_trade_status() -> None:
     assert out["auto_enabled"] is False
     assert out["manual_enabled"] is True
     assert "no order placement" in out["note"]
+
+
+def test_summarize_telegram_no_token_fields() -> None:
+    out = summarize_telegram(
+        {"ok": True, "running": True, "configured": True, "watches": 2, "token": "SECRET"}
+    )
+    assert out["running"] is True
+    assert "token" not in out
+    assert "SECRET" not in str(out)
+
+
+def test_summarize_recovery() -> None:
+    out = summarize_recovery({"ok": True, "recovery": {"enabled": True, "running": True}})
+    assert out["running"] is True
+    assert "soak" in out["note"]
 
 
 def test_client_unreachable() -> None:

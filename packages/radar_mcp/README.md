@@ -2,9 +2,9 @@
 
 Read-only MCP (stdio) for [DUP Market Radar](https://github.com/Gruver87/dup-market-radar).
 
-**Tools:** `radar_health`, `radar_ready`, `radar_snapshot_summary`, `radar_metrics_up`, `radar_trade_paper_status`.
+**Tools:** `radar_health`, `radar_ready`, `radar_snapshot_summary`, `radar_metrics_up`, `radar_trade_paper_status`, `radar_trade_status`, `radar_telegram_status`, `radar_recovery_status`.
 
-**Never:** place order, enable auto, futures.
+**Never:** place order, enable auto, futures, print Telegram tokens.
 
 ```powershell
 $env:RADAR_BASE_URL = "http://127.0.0.1:8787"

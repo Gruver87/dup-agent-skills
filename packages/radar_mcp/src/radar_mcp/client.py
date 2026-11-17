@@ -90,6 +90,12 @@ class RadarClient:
     def trade_status(self) -> dict[str, Any]:
         return self.get_json("/api/trade/status", auth=True)
 
+    def telegram_status(self) -> dict[str, Any]:
+        return self.get_json("/api/telegram/status", auth=True)
+
+    def recovery_status(self) -> dict[str, Any]:
+        return self.get_json("/api/ops/recovery")
+
 
 def summarize_snapshot(snap: dict[str, Any]) -> dict[str, Any]:
     """Compact summary — no invented prices if fields missing."""
@@ -165,4 +171,26 @@ def summarize_trade_status(body: dict[str, Any]) -> dict[str, Any]:
         "manual_enabled": manual.get("enabled"),
         "rate_limit": body.get("rate_limit"),
         "note": "read-only status — no order placement / no auto toggle",
+    }
+
+
+def summarize_telegram(body: dict[str, Any]) -> dict[str, Any]:
+    """Ops telegram surface — never prints tokens."""
+    return {
+        "ok": bool(body.get("ok", True)),
+        "running": body.get("running"),
+        "configured": body.get("configured"),
+        "watches": body.get("watches") or body.get("n_watches"),
+        "circuit": body.get("circuit"),
+        "note": "read-only — tokens never returned by this summary",
+    }
+
+
+def summarize_recovery(body: dict[str, Any]) -> dict[str, Any]:
+    recovery = body.get("recovery") if isinstance(body.get("recovery"), dict) else {}
+    return {
+        "ok": bool(body.get("ok")),
+        "enabled": recovery.get("enabled"),
+        "running": recovery.get("running"),
+        "note": recovery.get("note") or "ops recovery supervisor — not a soak claim",
     }
