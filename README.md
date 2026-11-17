@@ -13,6 +13,11 @@ Installable skills + optional read-only MCP for crypto **market ops** — not a 
 | [`absolute-trading-bot-final`](https://github.com/Gruver87/absolute-trading-bot-final) | Spot research bot — MEASUREMENT v1 stopped (no-edge) |
 | [`dup-protocol`](https://github.com/Gruver87/dup-protocol) | Industrial L1 pin |
 | [`dup-protocol-experimental`](https://github.com/Gruver87/dup-protocol-experimental) | R&D sandbox |
+| [`dup-skills-eval`](https://github.com/Gruver87/dup-skills-eval) | Static / honesty eval gate |
+| [`dup-skill-security-scan`](https://github.com/Gruver87/dup-skill-security-scan) | Install allowlist + security scan |
+| [`dup-radar-news-mcp`](https://github.com/Gruver87/dup-radar-news-mcp) | Read-only digest MCP |
+| [`dup-evidence-graph`](https://github.com/Gruver87/dup-evidence-graph) | Queryable evidence / claim map |
+| [`dup-policy-gate`](https://github.com/Gruver87/dup-policy-gate) | Spot-only policy before orders |
 
 ## Skills (v0.1)
 
