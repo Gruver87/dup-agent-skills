@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sync agents mirror
+        run: |
+          mkdir -p .agents/skills
+          cp -a skills/. .agents/skills/
+      - name: Validate skills
+        run: python scripts/validate_skills.py
+      - name: Install MCP package
+        run: pip install -e "./packages/radar_mcp[dev]"
+      - name: Ruff
+        run: |
+          pip install ruff
+          python -m ruff check packages/radar_mcp scripts
+      - name: Unit tests
+        run: python -m pytest packages/radar_mcp/tests -q

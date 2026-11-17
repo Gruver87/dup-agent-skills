@@ -1,33 +1,32 @@
 ---
 name: evidence-honesty
 description: >-
-  Fail-closed claims for DUP Labs products — packs on disk, no invented PASS,
-  no soak without approx_48h_claim_ok. Use for readiness, audit, or marketing copy.
+  Fail-closed claims for DUP Labs — packs on disk, no invented PASS, no soak
+  without approx_48h_claim_ok. Use for readiness, audit language, marketing
+  copy, CHANGELOG, or diligence text.
+license: MIT
+compatibility: Policy skill; cite on-disk packs in dup-market-radar or dup-protocol*.
+metadata:
+  author: dup-labs
+  version: "0.1.0"
+  product: dup-labs
 ---
 
 # Evidence honesty
 
-## Matrix (radar)
+## When to Use
 
-| Claim | Needs |
-|-------|--------|
-| Unit green | pytest / CI |
-| Ops-ready | `READY_OPS.json` `ops_ready=true` |
-| Short soak | `hard_fails=0` in soak pack (not 48h) |
-| 48h soak | `approx_48h_claim_ok=true` AND `hard_fails=0` |
-| Live money ready | `go_live_money.ps1` PASS + operator keys |
+- Any readiness / PASS / mainnet / soak statement
+- Editing CHANGELOG, README badges, diligence briefs
 
-## L1 (dup-protocol*)
+## Steps
 
-Do not mix radar packs with L1 mesh soak / tip-v2 industrial claims. Cite the correct repo and ADR/evidence docs.
-
-## Writing rules
-
-- Missing pack ⇒ **⏳ / not claimed** — never invent PASS.
-- Prefer paths: `docs/evidence/runs/...`, `data/evidence/...`.
-- After code change: do not claim 48h soak unless it was actually run.
+1. Identify product (radar vs L1 pin vs experimental).
+2. Require pack path or refuse.
+3. Use matrix in [references/claim-matrix.md](references/claim-matrix.md).
 
 ## Refuse
 
-- “We’re mainnet ready” without sealed diligence packs.
+- “Mainnet ready” without sealed packs.
 - Equating CI green with soak PASS.
+- Mixing radar and L1 evidence — skill `l1-boundary`.

@@ -1,39 +1,54 @@
 ---
 name: radar-ops-status
 description: >-
-  Honest status language for DUP Market Radar — ops-ready vs short soak vs 48h
-  claim vs live money. Use when the user asks if radar is ready, green, or soaked.
+  Honest DUP Market Radar readiness language — ops-ready vs short soak vs 48h
+  claim vs live money. Use when the user asks if radar is ready, green, soaked,
+  PASS, or production-ready.
+license: MIT
+compatibility: Requires local clone of dup-market-radar for gate scripts; Windows PowerShell preferred.
+metadata:
+  author: dup-labs
+  version: "0.1.0"
+  product: dup-market-radar
 ---
 
 # Radar ops status (fail-closed)
 
+## When to Use
+
+- User asks «готов / ready / green / soak passed / можно в прод»
+- Writing README/CHANGELOG claims about radar readiness
+
 ## Invariants
 
-1. **Ops-ready** = `go_ready.ps1` PASS + `READY_OPS.json` with `ops_ready=true`.  
-   This is **not** a 48h soak claim.
-2. **48h soak PASS** only if pack has `approx_48h_claim_ok=true` **and** `hard_fails=0`.  
-   Never invent PASS from pytest alone.
-3. **Live money** needs `.env` KuCoin Spot keys + `go_live_money.ps1` — separate from ops-ready.
-4. Futures may appear in **watchlist / data**; they are **never** auto-traded.
+1. **Ops-ready** = `go_ready.ps1` PASS + `data/evidence/READY_OPS.json` with `ops_ready=true`. Not a 48h claim.
+2. **48h soak PASS** only if pack has `approx_48h_claim_ok=true` **and** `hard_fails=0`.
+3. **Live money** is separate — skill `radar-live-money-gate`.
+4. Futures data/watch OK; futures **auto** never — skill `no-futures-auto`.
 
-## What to run (Windows, repo `dup-market-radar`)
+## Steps
+
+1. Prefer real command output over memory.
+2. Run or cite:
 
 ```powershell
 cd <path>\dup-market-radar
-.\scripts\test_all.ps1 -SkipBuild          # gate + pytest + smokes (no 48h)
-.\scripts\go_ready.ps1 -SkipBuild          # ops-ready pack
-# Soak48h ONLY after explicit operator approval
+.\scripts\test_all.ps1 -SkipBuild
+.\scripts\go_ready.ps1 -SkipBuild
 ```
 
-## How to answer the user
+3. Answer with the **exact** gate that passed (pytest / go_ready / soak fields).
 
-| They say | You say |
-|----------|---------|
-| «всё зелёное / ready» | Cite which gate: pytest / go_ready / soak pack fields — or refuse |
-| «soak passed» | Only if pack on disk says so; else **not claimed** |
-| «можно на деньги» | Point to `docs/LIVE_MONEY.md` + `go_live_money.ps1`; do not flip `dry_run` silently |
+## Examples
+
+- User: «soak прошёл?» → Check pack; if missing/`approx_48h_claim_ok=false` → **not claimed**.
+- User: «ops ready?» → Only if `READY_OPS.json` says `ops_ready=true`.
 
 ## Refuse
 
-- Painting green without command output or pack paths.
-- Mixing L1 mesh soak evidence with radar packs.
+- Painting green without output or pack paths.
+- Mixing L1 mesh soak with radar packs — see `l1-boundary`.
+
+## References
+
+- [Evidence matrix language](references/evidence-matrix.md)

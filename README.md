@@ -1,9 +1,9 @@
 # DUP Agent Skills — Market Ops
 
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Product:** Installable [Agent Skills](https://github.com/anthropics/skills) for crypto **market ops** — not a trading bot, not an L1.
+**Version:** `0.1.0` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
-Companion to:
+Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
 | Repo | Role |
 |------|------|
@@ -12,47 +12,55 @@ Companion to:
 | [`dup-protocol`](https://github.com/Gruver87/dup-protocol) | Industrial L1 pin |
 | [`dup-protocol-experimental`](https://github.com/Gruver87/dup-protocol-experimental) | R&D sandbox |
 
-## What this is
+## Skills (v0.1)
 
-Markdown skills your coding agent (Cursor / Claude Code / compatible) can load to:
+| Skill | Purpose |
+|-------|---------|
+| `radar-ops-status` | Ops-ready ≠ soak ≠ live money |
+| `radar-live-money-gate` | Spot live preflight; futures auto refused |
+| `no-futures-auto` | Hard policy refuse |
+| `market-digest` | Honest digest templates |
+| `evidence-honesty` | Claims need packs |
+| `radar-pwa-install` | Phone panel over HTTPS — not phone server |
+| `radar-test-gate` | `test_all` / `go_ready` / CI |
+| `bot-holdout-wait` | No retune during holdout |
+| `l1-boundary` | Radar ≠ L1 mesh evidence |
+| `secrets-hygiene` | Never print/commit keys |
 
-- Talk to **Market Radar** honestly (ops-ready ≠ 48h soak ≠ live money)
-- Refuse **futures auto-trade** framing
-- Run fail-closed checklists before `dry_run: false`
-- Draft digests / status without inventing PASS claims
+## Install
 
-**Not financial advice.** No guarantees. Keys stay on the host — skills do not embed secrets.
-
-## Install (Cursor)
-
-1. Clone next to your other DUP folders:
+See [`docs/INSTALL.md`](docs/INSTALL.md).
 
 ```powershell
-cd $env:USERPROFILE\Desktop
 git clone https://github.com/Gruver87/dup-agent-skills.git
+cd dup-agent-skills
+.\scripts\sync_agents_skills.ps1
+python scripts\validate_skills.py
 ```
 
-2. Point the agent at `skills/` (project rule, skill path, or `@dup-agent-skills/skills/...`).
-3. Prefer running radar on the host: `dup-market-radar` → `.\scripts\run_radar.ps1`.
+**Cursor plugin:** open this repo / point Plugins UI at `.cursor-plugin/plugin.json`.  
+**User skills:** `.\scripts\install_user_skills.ps1`
 
-## Skills (v0)
+## MCP (read-only)
 
-| Skill | Path | Purpose |
-|-------|------|---------|
-| `radar-ops-status` | [`skills/radar-ops-status/SKILL.md`](skills/radar-ops-status/SKILL.md) | Honest radar / go_ready / soak language |
-| `radar-live-money-gate` | [`skills/radar-live-money-gate/SKILL.md`](skills/radar-live-money-gate/SKILL.md) | Preflight before live spot capital |
-| `no-futures-auto` | [`skills/no-futures-auto/SKILL.md`](skills/no-futures-auto/SKILL.md) | Hard refuse futures in auto-trade advice |
-| `market-digest` | [`skills/market-digest/SKILL.md`](skills/market-digest/SKILL.md) | 1h / funding / TG-style digest from radar |
-| `evidence-honesty` | [`skills/evidence-honesty/SKILL.md`](skills/evidence-honesty/SKILL.md) | Claims need packs; no invented PASS |
+`mcp.json` → `python -m radar_mcp` with `RADAR_BASE_URL` / optional `RADAR_API_KEY`.
+
+Tools: `radar_health`, `radar_ready`, `radar_snapshot_summary`, `radar_metrics_up`, `radar_trade_paper_status`.  
+No place-order / no auto-enable / no futures.
+
+```powershell
+pip install -e ./packages/radar_mcp
+python scripts\radar_mcp_lab.py
+```
 
 ## Honesty
 
 - Ops-ready ≠ 48h soak PASS  
 - Lab smoke ≠ mainnet  
-- Skills never claim exchange fills happened without operator evidence  
+- Futures auto always out of scope  
 
-See [`docs/DISCLAIMER.md`](docs/DISCLAIMER.md).
+[`docs/DISCLAIMER.md`](docs/DISCLAIMER.md) · [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/EXAMPLES.md`](docs/EXAMPLES.md)
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE).
+MIT — [`LICENSE`](LICENSE).

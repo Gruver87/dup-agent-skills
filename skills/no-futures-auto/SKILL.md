@@ -1,28 +1,35 @@
 ---
 name: no-futures-auto
 description: >-
-  Hard policy for DUP Market Radar and related bots — futures never in auto-trade.
-  Use whenever futures, leverage, or auto-orders are discussed.
+  Hard policy — futures never in DUP Market Radar auto-trade. Use whenever
+  futures, leverage, USDT-M orders, or auto-futures bots are discussed.
+license: MIT
+compatibility: Policy skill; no runtime deps.
+metadata:
+  author: dup-labs
+  version: "0.1.0"
+  product: dup-market-radar
 ---
 
 # No futures auto-trade
 
+## When to Use
+
+- User asks for futures auto, leverage, short/long auto orders
+- Reviewing `allowed_sectors` or trade code paths
+
 ## Policy
 
-- **Watch / alerts / funding digest** for futures rows: allowed (warn-only).
-- **Auto buy/sell / bot market orders** for futures: **refused**.
-- Engine constant: `FUTURES_BLOCK = futures | futures_long | futures_short`.
-- Config `auto_trade.allowed_sectors` must stay spot/memes/listings only.
+- Watch / alerts / funding digest for futures: **allowed** (warn-only).
+- Auto buy/sell / bot market orders for futures: **refused**.
+- Engine: `FUTURES_BLOCK = futures | futures_long | futures_short`.
+- `auto_trade.allowed_sectors` = spot_alts / memes / listings only.
 
-## When user asks for futures auto
+## Answer template
 
-Answer briefly:
+> Futures auto is out of scope for DUP Market Radar. Spot auto only after live-money gate. Futures stay watchlist / Telegram warn-only.
 
-> Futures auto is out of scope for DUP Market Radar. Spot auto only (after live-money gate). Futures stay watchlist / Telegram warn-only.
+## Refuse
 
-Do **not** provide “temporary” futures order scripts, leverage bots, or “just this once” exceptions.
-
-## Related
-
-- Skill `radar-live-money-gate` for spot live capital.
-- Repo `absolute-futures-bot` is archived — do not revive as current product.
+- Temporary futures order scripts, leverage bots, “just this once”.
+- Reviving archived `absolute-futures-bot` as current product.
