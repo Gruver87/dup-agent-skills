@@ -8,7 +8,7 @@ license: MIT
 compatibility: Policy skill; cite on-disk packs in dup-market-radar or dup-protocol*.
 metadata:
   author: dup-labs
-  version: "0.1.7"
+  version: "0.1.8"
   product: dup-labs
 ---
 

@@ -1,11 +1,14 @@
 {
   "mcpServers": {
     "radar-ops": {
-      "command": "python",
-      "args": ["-m", "radar_mcp"],
-      "env": {
-        "RADAR_BASE_URL": "http://127.0.0.1:8787"
-      }
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${CURSOR_PLUGIN_ROOT}/scripts/run_radar_mcp.ps1"
+      ]
     }
   }
 }

@@ -8,7 +8,7 @@ license: MIT
 compatibility: Requires running radar HTTP dashboard with /manifest.webmanifest and /sw.js.
 metadata:
   author: dup-labs
-  version: "0.1.7"
+  version: "0.1.8"
   product: dup-market-radar
 ---
 

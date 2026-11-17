@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.8 — 2026-11-17
+
+- MCP: `run_radar_mcp.ps1` + `load_radar_env.ps1` load `RADAR_API_KEY` from sibling radar `.env` (never print/commit).
+- `mcp.json` invokes the PowerShell launcher (keyed tools no longer stuck at 401 when `.env` has the key).
+- `radar-live-money-gate`: `-Status` path; refuse inventing KuCoin keys / soak-as-live.
+
 ## 0.1.7 — 2026-11-17
 
 - `radar_mcp_lab.py` probes all read-only surfaces (health/ready/metrics/snapshot/trade/telegram/recovery).

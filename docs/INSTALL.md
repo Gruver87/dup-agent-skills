@@ -38,10 +38,9 @@ Install via Cursor Plugins UI pointing at this folder, or clone + open as plugin
 ## D. MCP radar-ops (optional)
 
 1. Start radar: `dup-market-radar` → `.\scripts\run_radar.ps1`
-2. Install package: `.\scripts\install_mcp.ps1` (preferred on Windows)
-3. Set `RADAR_BASE_URL=http://127.0.0.1:8787` (default)
-4. Optional: `RADAR_API_KEY` for gated endpoints (MCP env only)
-5. Enable MCP from `mcp.json`
+2. Install package: `.\scripts\install_mcp.ps1`
+3. Prefer `mcp.json` → `scripts/run_radar_mcp.ps1` (loads `RADAR_API_KEY` from sibling radar `.env`, never prints)
+4. Or lab shell: `.\scripts\load_radar_env.ps1` then `python scripts\radar_mcp_lab.py`
 
 Full detail: [`MCP.md`](MCP.md). **Read-only** — no place-order / no auto-enable / no futures.
 

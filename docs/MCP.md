@@ -13,25 +13,15 @@ This does `pip install -e packages/radar_mcp` so `python -m radar_mcp` works wit
 
 ## Cursor wiring
 
-Repo root [`mcp.json`](../mcp.json):
+Repo root [`mcp.json`](../mcp.json) launches `scripts/run_radar_mcp.ps1`, which loads `RADAR_API_KEY` / `RADAR_BASE_URL` from sibling `dup-market-radar/.env` (**never** commits secrets, never prints values).
 
-```json
-{
-  "mcpServers": {
-    "radar-ops": {
-      "command": "python",
-      "args": ["-m", "radar_mcp"],
-      "env": {
-        "RADAR_BASE_URL": "http://127.0.0.1:8787"
-      }
-    }
-  }
-}
+```powershell
+# Lab in current shell (values hidden):
+.\scripts\load_radar_env.ps1
+python scripts\radar_mcp_lab.py
 ```
 
-Optional: set `RADAR_API_KEY` in the MCP server env (process only — never commit).
-
-Root `mcp.json` runs `python -m radar_mcp` only — **requires** `.\scripts\install_mcp.ps1` first (no `CURSOR_PLUGIN_ROOT` PYTHONPATH dependency).
+Requires `.\scripts\install_mcp.ps1` first. If Cursor does not expand `${CURSOR_PLUGIN_ROOT}`, point the MCP File path at this repo’s `scripts/run_radar_mcp.ps1` absolutely or open the plugin from this folder.
 
 ## Tools
 

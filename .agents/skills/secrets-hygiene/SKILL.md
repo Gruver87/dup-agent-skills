@@ -7,7 +7,7 @@ license: MIT
 compatibility: Policy skill; applies to all DUP Labs repos.
 metadata:
   author: dup-labs
-  version: "0.1.7"
+  version: "0.1.8"
   product: dup-labs
 ---
 
