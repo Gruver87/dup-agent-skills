@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.5 — 2026-11-17
+
+- MCP: read-only `radar_trade_status` (GET `/api/trade/status` — never toggles auto).
+- `validate_skills` also pins `.cursor-plugin/plugin.json` + `radar_mcp` pyproject to the same semver.
+- INSTALL §F for absolute-trading-bot `test_all` / `bot_gate`.
+
 ## 0.1.4 — 2026-11-17
 
 - `validate_skills.py` enforces `metadata.version` == `plugin.json` version.

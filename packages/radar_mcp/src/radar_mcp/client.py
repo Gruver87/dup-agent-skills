@@ -87,6 +87,9 @@ class RadarClient:
     def trade_paper(self) -> dict[str, Any]:
         return self.get_json("/api/trade/paper", auth=True)
 
+    def trade_status(self) -> dict[str, Any]:
+        return self.get_json("/api/trade/status", auth=True)
+
 
 def summarize_snapshot(snap: dict[str, Any]) -> dict[str, Any]:
     """Compact summary — no invented prices if fields missing."""
@@ -147,4 +150,19 @@ def summarize_paper(body: dict[str, Any]) -> dict[str, Any]:
         "realized_pnl_usdt_micros": body.get("realized_pnl_usdt_micros"),
         "unrealized_pnl_usdt_micros": body.get("unrealized_pnl_usdt_micros"),
         "note": "integer micros when present — not advice",
+    }
+
+
+def summarize_trade_status(body: dict[str, Any]) -> dict[str, Any]:
+    """Read-only surface — never enables auto or places orders."""
+    auto = body.get("auto") if isinstance(body.get("auto"), dict) else {}
+    manual = body.get("manual") if isinstance(body.get("manual"), dict) else {}
+    return {
+        "ok": bool(body.get("ok", True)),
+        "auto_enabled": auto.get("enabled"),
+        "auto_dry_run": auto.get("dry_run"),
+        "positions_integrity": auto.get("positions_integrity"),
+        "manual_enabled": manual.get("enabled"),
+        "rate_limit": body.get("rate_limit"),
+        "note": "read-only status — no order placement / no auto toggle",
     }

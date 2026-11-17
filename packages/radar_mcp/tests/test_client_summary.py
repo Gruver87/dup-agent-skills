@@ -15,6 +15,7 @@ from radar_mcp.client import (
     summarize_paper,
     summarize_ready,
     summarize_snapshot,
+    summarize_trade_status,
 )
 
 
@@ -56,6 +57,20 @@ def test_summarize_paper() -> None:
     out = summarize_paper({"ok": True, "dry_run": True, "realized_pnl_usdt_micros": 0})
     assert out["dry_run"] is True
     assert out["realized_pnl_usdt_micros"] == 0
+
+
+def test_summarize_trade_status() -> None:
+    out = summarize_trade_status(
+        {
+            "ok": True,
+            "auto": {"enabled": False, "dry_run": True, "positions_integrity": "ok"},
+            "manual": {"enabled": True},
+            "rate_limit": {"ok": True},
+        }
+    )
+    assert out["auto_enabled"] is False
+    assert out["manual_enabled"] is True
+    assert "no order placement" in out["note"]
 
 
 def test_client_unreachable() -> None:

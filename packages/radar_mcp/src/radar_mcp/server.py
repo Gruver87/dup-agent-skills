@@ -16,6 +16,7 @@ from radar_mcp.client import (
     summarize_paper,
     summarize_ready,
     summarize_snapshot,
+    summarize_trade_status,
 )
 
 mcp = FastMCP("radar-ops")
@@ -75,6 +76,16 @@ def radar_trade_paper_status() -> str:
 
     def _inner() -> dict[str, Any]:
         return summarize_paper(RadarClient().trade_paper())
+
+    return _run(_inner)
+
+
+@mcp.tool()
+def radar_trade_status() -> str:
+    """GET /api/trade/status — auto/manual surface (read-only; never toggles)."""
+
+    def _inner() -> dict[str, Any]:
+        return summarize_trade_status(RadarClient().trade_status())
 
     return _run(_inner)
 

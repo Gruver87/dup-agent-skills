@@ -25,7 +25,7 @@ Canonical packs live in `skills/<name>/SKILL.md` (Agent Skills / agentskills.io)
 | `.cursor-plugin/plugin.json` | Cursor plugin manifest |
 | `mcp.json` | MCP server wiring |
 
-Version pin: **0.1.4** (plugin / package semver).
+Version pin: **0.1.5** (plugin / package semver).
 
 ## MCP `radar-ops`
 
@@ -38,6 +38,7 @@ Package: `packages/radar_mcp` (Python, stdio, FastMCP).
 | `radar_snapshot_summary` | GET `/api/snapshot` |
 | `radar_metrics_up` | GET `/api/metrics` |
 | `radar_trade_paper_status` | GET `/api/trade/paper` |
+| `radar_trade_status` | GET `/api/trade/status` |
 
 Auth: `RADAR_API_KEY` from process env only. Fail-closed on unreachable radar.  
 Install: `scripts/install_mcp.ps1` (editable pip). Detail: [`MCP.md`](MCP.md).

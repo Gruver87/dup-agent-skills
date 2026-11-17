@@ -54,6 +54,17 @@ cd ..\dup-market-radar
 
 See radar [`docs/AGENT_SKILLS.md`](https://github.com/Gruver87/dup-market-radar/blob/main/docs/AGENT_SKILLS.md).
 
+## F. From absolute-trading-bot-final checkout
+
+```powershell
+cd ..\absolute-trading-bot-final
+.\scripts\link_agent_skills.ps1
+.\scripts\test_all.ps1
+```
+
+Policy: [`PROTOCOL_STATUS`](https://github.com/Gruver87/absolute-trading-bot-final/blob/main/docs/PROTOCOL_STATUS.md) — v1 stopped, `SPOT_ENTRIES` off.  
+Bot docs: [`AGENT_SKILLS.md`](https://github.com/Gruver87/absolute-trading-bot-final/blob/main/docs/AGENT_SKILLS.md).
+
 ## Validate / test gate
 
 ```powershell

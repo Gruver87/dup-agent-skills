@@ -42,6 +42,7 @@ Root `mcp.json` runs `python -m radar_mcp` only — **requires** `.\scripts\inst
 | `radar_snapshot_summary` | GET `/api/snapshot` |
 | `radar_metrics_up` | GET `/api/metrics` |
 | `radar_trade_paper_status` | GET `/api/trade/paper` |
+| `radar_trade_status` | GET `/api/trade/status` (read-only; never toggles auto) |
 
 Radar must be running (`dup-market-radar` → `.\scripts\run_radar.ps1`). If down → structured error / lab `SKIP` — no invented prices.
 

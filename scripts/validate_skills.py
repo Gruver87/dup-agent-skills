@@ -99,10 +99,9 @@ def validate_skill(dir_path: Path) -> list[str]:
 _SKILL_VERSIONS: dict[str, str] = {}
 
 
-def _plugin_version() -> str | None:
+def _json_version(path: Path) -> str | None:
     import json
 
-    path = ROOT / "plugin.json"
     if not path.is_file():
         return None
     try:
@@ -111,6 +110,10 @@ def _plugin_version() -> str | None:
         return None
     ver = data.get("version")
     return str(ver).strip() if ver is not None else None
+
+
+def _plugin_version() -> str | None:
+    return _json_version(ROOT / "plugin.json")
 
 
 def main() -> int:
@@ -139,6 +142,22 @@ def main() -> int:
         for folder, ver in sorted(_SKILL_VERSIONS.items()):
             if ver != pin:
                 all_errs.append(f"{folder}: metadata.version={ver!r} != plugin.json {pin!r}")
+        cursor_pin = _json_version(ROOT / ".cursor-plugin" / "plugin.json")
+        if not cursor_pin:
+            all_errs.append(".cursor-plugin/plugin.json: missing version")
+        elif cursor_pin != pin:
+            all_errs.append(
+                f".cursor-plugin/plugin.json version={cursor_pin!r} != plugin.json {pin!r}"
+            )
+        pkg = ROOT / "packages" / "radar_mcp" / "pyproject.toml"
+        if pkg.is_file():
+            m = re.search(r'(?m)^version\s*=\s*"([^"]+)"', pkg.read_text(encoding="utf-8"))
+            if not m:
+                all_errs.append("packages/radar_mcp/pyproject.toml: missing version")
+            elif m.group(1) != pin:
+                all_errs.append(
+                    f"radar_mcp pyproject version={m.group(1)!r} != plugin.json {pin!r}"
+                )
     if all_errs:
         print("validate_skills FAIL")
         for e in all_errs:
