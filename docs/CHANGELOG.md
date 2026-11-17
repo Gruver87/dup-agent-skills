@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3 — 2026-11-17
+
+- `bot-holdout-wait` aligned to `PROTOCOL_STATUS` — MEASUREMENT v1 stopped, no silent retune, `SPOT_ENTRIES` off (not obsolete Oct-25 holdout theater).
+- Skill metadata versions bumped to 0.1.3; companion docs in absolute-trading-bot-final.
+
 ## 0.1.2 — 2026-11-17
 
 - `scripts/install_mcp.ps1` — editable pip install; avoid WindowsApps stub via `py -3`.

@@ -8,7 +8,7 @@ license: MIT
 compatibility: Requires local clone of dup-market-radar for gate scripts; Windows PowerShell preferred.
 metadata:
   author: dup-labs
-  version: "0.1.0"
+  version: "0.1.3"
   product: dup-market-radar
 ---
 

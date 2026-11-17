@@ -3,7 +3,7 @@
 [![ci](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml)
 
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Version:** `0.1.2` · **Standard:** [Agent Skills](https://agentskills.io/specification)
+**Version:** `0.1.3` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
@@ -25,7 +25,7 @@ Installable skills + optional read-only MCP for crypto **market ops** — not a 
 | `evidence-honesty` | Claims need packs |
 | `radar-pwa-install` | Phone panel over HTTPS — not phone server |
 | `radar-test-gate` | `test_all` / `go_ready` / CI |
-| `bot-holdout-wait` | No retune during holdout |
+| `bot-holdout-wait` | Bot v1 stopped — no silent retune / no SPOT_ENTRIES |
 | `l1-boundary` | Radar ≠ L1 mesh evidence |
 | `secrets-hygiene` | Never print/commit keys |
 

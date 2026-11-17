@@ -22,9 +22,9 @@ Not financial advice. Prefer a running local radar when asking for live status.
 
 > Run / interpret `test_all` and `go_ready` for dup-market-radar. Unit green ≠ soak.
 
-## Holdout
+## Bot protocol freeze
 
-> absolute-trading-bot: can we retune today? Check holdout freeze first.
+> absolute-trading-bot: can we retune / enable SPOT_ENTRIES? Cite PROTOCOL_STATUS — v1 stopped, entries stay off.
 
 ## Boundary
 

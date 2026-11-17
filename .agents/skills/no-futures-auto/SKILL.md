@@ -7,7 +7,7 @@ license: MIT
 compatibility: Policy skill; no runtime deps.
 metadata:
   author: dup-labs
-  version: "0.1.0"
+  version: "0.1.3"
   product: dup-market-radar
 ---
 

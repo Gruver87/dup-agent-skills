@@ -1,34 +1,45 @@
 ---
 name: bot-holdout-wait
 description: >-
-  absolute-trading-bot holdout discipline — do not retune until the holdout
-  date. Use when the user asks to retune, optimize, or change strategy before
-  the frozen evaluation window ends.
+  absolute-trading-bot protocol freeze — MEASUREMENT v1 stopped (no-edge);
+  do not retune or enable SPOT_ENTRIES from the old eight-median gate. Use when
+  the user asks to retune, optimize, unlock buys, or rewrite MEASUREMENT.md.
 license: MIT
-compatibility: absolute-trading-bot-final checkout; consult HOLD_OUT / freeze docs in that repo.
+compatibility: absolute-trading-bot-final; cite docs/PROTOCOL_STATUS.md and docs/MEASUREMENT.md.
 metadata:
   author: dup-labs
-  version: "0.1.0"
+  version: "0.1.3"
   product: absolute-trading-bot
 ---
 
-# Bot holdout wait
+# Bot protocol freeze (ex-holdout)
 
 ## When to Use
 
-- Retune / optimize / “улучши стратегию” on absolute-trading-bot before holdout ends
+- «ретюнь / улучши стратегию / включи входы / SPOT_ENTRIES=1»
+- Editing `docs/MEASUREMENT.md` or claiming new edge on v1
 
-## Policy
+## Current policy (as of PROTOCOL_STATUS 2026-11-17)
 
-1. Find the holdout / freeze date and freeze commit in that repo’s docs.
-2. Until that date: **observe only** — no parameter hunt that invalidates the holdout.
-3. After holdout: retune only with a new labeled experiment + evidence.
+1. **MEASUREMENT v1 is stopped** — accepted **no-edge** on the current tape.
+2. `docs/MEASUREMENT.md` is a **historical** record — do **not** silently rewrite to paint green.
+3. `SPOT_ENTRIES` stays **off**. Do **not** unlock buys via the old eight-median unseen gate.
+4. Next protocol (v2) only after an **explicit operator decision** written into the repo (not chat-only).
+5. Maintained base: KuCoin client, CI, kill switch, gate journal — observe / ops only.
+
+## Steps
+
+1. Read `docs/PROTOCOL_STATUS.md` in `absolute-trading-bot-final`.
+2. If user wants retune: refuse silent hyperparameter hunt; propose labeled v2 experiment + evidence folder **only if** they order that step.
+3. If user cites old holdout date (e.g. 2026-10-25): note that date was the freeze for the gate run; gate FAIL does **not** unlock entries.
 
 ## Answer template
 
-> Holdout is active until &lt;date&gt;. No retune. Log observations only; next experiment starts after the window with a new evidence folder.
+> MEASUREMENT v1 is stopped (no-edge). SPOT_ENTRIES stays off. MEASUREMENT.md is historical — not an unlock path. No retune / no silent rewrite. Next step needs an accepted v2 written in-repo by operator decision.
 
 ## Refuse
 
-- Silent hyperparameter search during holdout.
-- Claiming improved expectancy without a post-holdout pack.
+- Enabling `SPOT_ENTRIES` from failed/old eight-median gate PASS theater.
+- Silent retune of stop/take/trail/slippage/pairs under “just improve it”.
+- Claiming expectancy without a new labeled evidence pack after an accepted v2.
+- Mixing this bot’s paper loop with Market Radar live-money or L1 mesh claims.
