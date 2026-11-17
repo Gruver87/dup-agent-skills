@@ -8,7 +8,7 @@ license: MIT
 compatibility: Windows PowerShell; dup-market-radar with scripts/verify.ps1, test_all.ps1, go_ready.ps1.
 metadata:
   author: dup-labs
-  version: "0.1.8"
+  version: "0.1.9"
   product: dup-market-radar
 ---
 

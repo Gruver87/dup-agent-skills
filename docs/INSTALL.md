@@ -4,7 +4,7 @@
 
 ## A. Open as a Cursor project (recommended)
 
-1. Open folder `dup-agent-skills` in Cursor (or add to multi-root with `dup-market-radar`).
+1. Open [`dup-labs.code-workspace`](../dup-labs.code-workspace) (radar + skills + trading-bot) or this folder alone.
 2. Skills load from `.agents/skills/` (mirrored from `skills/` via `scripts/sync_agents_skills.ps1`).
 3. Invoke with `/` + skill name, or let the agent auto-pick from `description`.
 

@@ -1,0 +1,14 @@
+{
+  "folders": [
+    { "name": "dup-agent-skills", "path": "." },
+    { "name": "dup-market-radar", "path": "../dup-market-radar" },
+    { "name": "absolute-trading-bot-final", "path": "../absolute-trading-bot-final" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.venv": true,
+      "**/__pycache__": true,
+      "**/native/**/target": true
+    }
+  }
+}

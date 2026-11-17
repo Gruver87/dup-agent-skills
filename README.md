@@ -3,7 +3,7 @@
 [![ci](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml)
 
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Version:** `0.1.8` · **Standard:** [Agent Skills](https://agentskills.io/specification)
+**Version:** `0.1.9` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 

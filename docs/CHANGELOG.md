@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.9 — 2026-11-17
+
+- `dup-labs.code-workspace` multi-root (skills + radar + trading-bot).
+- INSTALL points at the workspace file.
+
 ## 0.1.8 — 2026-11-17
 
 - MCP: `run_radar_mcp.ps1` + `load_radar_env.ps1` load `RADAR_API_KEY` from sibling radar `.env` (never print/commit).

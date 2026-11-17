@@ -7,7 +7,7 @@ license: MIT
 compatibility: Policy skill across dup-protocol, dup-protocol-experimental, dup-market-radar.
 metadata:
   author: dup-labs
-  version: "0.1.8"
+  version: "0.1.9"
   product: dup-labs
 ---
 
