@@ -32,7 +32,8 @@ $env:RADAR_BASE_URL = "http://127.0.0.1:8787"
 .\scripts\test_all.ps1 -WithLab -SkipInstall
 ```
 
-Or: `python scripts\radar_mcp_lab.py` → `PASS` or honest `SKIP radar down`.
+Or: `python scripts\radar_mcp_lab.py` → `PASS` (probes all read-only surfaces) or honest `SKIP radar down`.  
+Keyed trade/telegram endpoints WARN 401 without `RADAR_API_KEY` — that is fail-closed, not a fake PASS.
 
 ## What this is not
 

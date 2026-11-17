@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Lab probe against local radar — honest SKIP if down.
 
+Exercises all read-only MCP client surfaces. Never places orders / toggles auto.
 Exit 0 on PASS or intentional SKIP; exit 1 on unexpected failure.
 """
 
@@ -20,8 +21,18 @@ from radar_mcp.client import (
     RadarClient,
     RadarClientError,
     summarize_health,
+    summarize_metrics,
+    summarize_paper,
+    summarize_ready,
+    summarize_recovery,
     summarize_snapshot,
+    summarize_telegram,
+    summarize_trade_status,
 )
+
+
+def _print(label: str, data: object) -> None:
+    print(f"{label}:", json.dumps(data, indent=2, default=str))
 
 
 def main() -> int:
@@ -33,14 +44,48 @@ def main() -> int:
         print(f"SKIP radar down: {exc}")
         print(json.dumps(exc.as_dict(), indent=2))
         return 0
-    print("health:", json.dumps(health, indent=2, default=str))
+
+    _print("health", health)
+
+    probes: list[tuple[str, object]] = []
+    # recovery is unauthenticated on radar
     try:
-        snap = summarize_snapshot(client.snapshot())
-        print("snapshot:", json.dumps(snap, indent=2, default=str))
+        probes.append(("recovery", summarize_recovery(client.recovery_status())))
+    except RadarClientError as exc:
+        print(f"WARN recovery: {exc}")
+
+    try:
+        probes.append(("ready", summarize_ready(client.ready())))
+    except RadarClientError as exc:
+        print(f"WARN ready: {exc}")
+        print(json.dumps(exc.as_dict(), indent=2, default=str))
+
+    try:
+        probes.append(("metrics", summarize_metrics(client.metrics())))
+    except RadarClientError as exc:
+        print(f"WARN metrics: {exc}")
+
+    try:
+        probes.append(("snapshot", summarize_snapshot(client.snapshot())))
     except RadarClientError as exc:
         print(f"WARN snapshot: {exc}")
         print(json.dumps(exc.as_dict(), indent=2, default=str))
-    print("PASS radar_mcp_lab (read-only)")
+
+    for label, fn in (
+        ("trade_status", lambda: summarize_trade_status(client.trade_status())),
+        ("trade_paper", lambda: summarize_paper(client.trade_paper())),
+        ("telegram", lambda: summarize_telegram(client.telegram_status())),
+    ):
+        try:
+            probes.append((label, fn()))
+        except RadarClientError as exc:
+            print(f"WARN {label}: {exc}")
+            print(json.dumps(exc.as_dict(), indent=2, default=str))
+
+    for label, data in probes:
+        _print(label, data)
+
+    print("PASS radar_mcp_lab (read-only; all surfaces probed or warned)")
     return 0
 
 

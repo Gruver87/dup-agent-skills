@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7 — 2026-11-17
+
+- `radar_mcp_lab.py` probes all read-only surfaces (health/ready/metrics/snapshot/trade/telegram/recovery).
+- `radar-test-gate` skill: `verify Quick/Full` explicitly **NO soak**; refuse casual Soak48h.
+- Radar companion docs list MCP tool table (≥0.1.6).
+
 ## 0.1.6 — 2026-11-17
 
 - MCP: `radar_telegram_status` + `radar_recovery_status` (read-only; no tokens; not a soak claim).
