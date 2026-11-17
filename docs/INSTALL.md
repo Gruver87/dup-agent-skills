@@ -37,11 +37,21 @@ Install via Cursor Plugins UI pointing at this folder, or clone + open as plugin
 ## D. MCP radar-ops (optional)
 
 1. Start radar: `dup-market-radar` → `.\scripts\run_radar.ps1`
-2. Set `RADAR_BASE_URL=http://127.0.0.1:8787` (default)
-3. Optional: `RADAR_API_KEY` for gated endpoints
-4. Enable MCP from `mcp.json` (stdio Python package `packages/radar_mcp`)
+2. Install package: `.\scripts\install_mcp.ps1` (preferred on Windows)
+3. Set `RADAR_BASE_URL=http://127.0.0.1:8787` (default)
+4. Optional: `RADAR_API_KEY` for gated endpoints (MCP env only)
+5. Enable MCP from `mcp.json`
 
-MCP is **read-only** — no place-order / no auto-enable / no futures.
+Full detail: [`MCP.md`](MCP.md). **Read-only** — no place-order / no auto-enable / no futures.
+
+## E. From dup-market-radar checkout
+
+```powershell
+cd ..\dup-market-radar
+.\scripts\link_agent_skills.ps1
+```
+
+See radar [`docs/AGENT_SKILLS.md`](https://github.com/Gruver87/dup-market-radar/blob/main/docs/AGENT_SKILLS.md).
 
 ## Validate / test gate
 

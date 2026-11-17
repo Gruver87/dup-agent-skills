@@ -3,7 +3,7 @@
 [![ci](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml)
 
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Version:** `0.1.1` · **Standard:** [Agent Skills](https://agentskills.io/specification)
+**Version:** `0.1.2` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
@@ -51,9 +51,12 @@ Tools: `radar_health`, `radar_ready`, `radar_snapshot_summary`, `radar_metrics_u
 No place-order / no auto-enable / no futures.
 
 ```powershell
+.\scripts\install_mcp.ps1
 .\scripts\test_all.ps1 -WithLab
 # or: python scripts\radar_mcp_lab.py
 ```
+
+From a radar checkout: `.\scripts\link_agent_skills.ps1` — see [`docs/MCP.md`](docs/MCP.md).
 
 ## Honesty
 

@@ -39,7 +39,8 @@ Package: `packages/radar_mcp` (Python, stdio, FastMCP).
 | `radar_metrics_up` | GET `/api/metrics` |
 | `radar_trade_paper_status` | GET `/api/trade/paper` |
 
-Auth: `RADAR_API_KEY` from process env only. Fail-closed on unreachable radar.
+Auth: `RADAR_API_KEY` from process env only. Fail-closed on unreachable radar.  
+Install: `scripts/install_mcp.ps1` (editable pip). Detail: [`MCP.md`](MCP.md).
 
 **Out of scope:** POST trade/order, enable auto, futures.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 — 2026-11-17
+
+- `scripts/install_mcp.ps1` — editable pip install for Windows MCP without fragile PYTHONPATH-only setups.
+- `docs/MCP.md` — operator wiring for radar-ops tools.
+- Radar companion: document `link_agent_skills.ps1` / AGENT_SKILLS cross-link.
+
 ## 0.1.1 — 2026-11-17
 
 - Fix CI ruff `EXE001` (Windows shebang / non-executable) via `ruff.toml`.
