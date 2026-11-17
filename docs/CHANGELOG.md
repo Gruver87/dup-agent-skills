@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.10 — 2026-11-17
+
+- `radar-ops-status` prefers `ops_board` / `verify Quick|Full` (explicit NO soak).
+
 ## 0.1.9 — 2026-11-17
 
 - `dup-labs.code-workspace` multi-root (skills + radar + trading-bot).

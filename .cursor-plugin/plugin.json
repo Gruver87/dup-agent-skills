@@ -1,6 +1,6 @@
 {
   "name": "dup-agent-skills",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "DUP Labs industrial Agent Skills + read-only radar-ops MCP for Market Radar.",
   "author": {
     "name": "DUP Labs",
