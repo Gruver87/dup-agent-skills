@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 — 2026-11-17
+
+- `validate_skills.py` enforces `metadata.version` == `plugin.json` version.
+- Evidence claim-matrix covers absolute-trading-bot PROTOCOL_STATUS / no silent MEASUREMENT rewrite.
+- README bot companion wording: v1 stopped (not “holdout” theater).
+
 ## 0.1.3 — 2026-11-17
 
 - `bot-holdout-wait` aligned to `PROTOCOL_STATUS` — MEASUREMENT v1 stopped, no silent retune, `SPOT_ENTRIES` off (not obsolete Oct-25 holdout theater).

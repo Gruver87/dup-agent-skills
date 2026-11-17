@@ -3,14 +3,14 @@
 [![ci](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/Gruver87/dup-agent-skills/actions/workflows/ci.yml)
 
 **Org:** [DUP Labs](https://github.com/Gruver87) · **Author:** Uladzimir Dabranski  
-**Version:** `0.1.3` · **Standard:** [Agent Skills](https://agentskills.io/specification)
+**Version:** `0.1.4` · **Standard:** [Agent Skills](https://agentskills.io/specification)
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
 | Repo | Role |
 |------|------|
 | [`dup-market-radar`](https://github.com/Gruver87/dup-market-radar) | Watchlist / KuCoin spot ops (PWA + Telegram) |
-| [`absolute-trading-bot-final`](https://github.com/Gruver87/absolute-trading-bot-final) | Research / holdout trading bot |
+| [`absolute-trading-bot-final`](https://github.com/Gruver87/absolute-trading-bot-final) | Spot research bot — MEASUREMENT v1 stopped (no-edge) |
 | [`dup-protocol`](https://github.com/Gruver87/dup-protocol) | Industrial L1 pin |
 | [`dup-protocol-experimental`](https://github.com/Gruver87/dup-protocol-experimental) | R&D sandbox |
 

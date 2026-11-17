@@ -77,13 +77,44 @@ def validate_skill(dir_path: Path) -> list[str]:
     license_f = (meta.get("license") or "").strip()
     if not license_f:
         errs.append(f"{folder}: missing license field")
+    # Nested metadata.version (indented under metadata:)
+    vm = re.search(r"(?m)^  version:\s*[\"']?([^\"'\s]+)[\"']?\s*$", text)
+    if not vm:
+        errs.append(f"{folder}: missing metadata.version")
+    else:
+        # stash for pack-level pin check via attribute on list return — also return in errs channel
+        ver = vm.group(1).strip()
+        if not re.match(r"^\d+\.\d+\.\d+$", ver):
+            errs.append(f"{folder}: metadata.version not semver ({ver!r})")
+        else:
+            # attach for caller via sentinel-free side channel on the Path is awkward;
+            # re-read in main — store on module dict
+            _SKILL_VERSIONS[folder] = ver
     body = FRONTMATTER_RE.sub("", text, count=1)
     if len(body.splitlines()) > 500:
         errs.append(f"{folder}: SKILL.md body > 500 lines (progressive disclosure)")
     return errs
 
 
+_SKILL_VERSIONS: dict[str, str] = {}
+
+
+def _plugin_version() -> str | None:
+    import json
+
+    path = ROOT / "plugin.json"
+    if not path.is_file():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    ver = data.get("version")
+    return str(ver).strip() if ver is not None else None
+
+
 def main() -> int:
+    _SKILL_VERSIONS.clear()
     if not SKILLS.is_dir():
         print("FAIL: skills/ missing", file=sys.stderr)
         return 1
@@ -101,12 +132,19 @@ def main() -> int:
             mirror = agents / d.name / "SKILL.md"
             if not mirror.is_file():
                 all_errs.append(f"mirror missing: .agents/skills/{d.name}/SKILL.md")
+    pin = _plugin_version()
+    if not pin:
+        all_errs.append("plugin.json: missing version")
+    else:
+        for folder, ver in sorted(_SKILL_VERSIONS.items()):
+            if ver != pin:
+                all_errs.append(f"{folder}: metadata.version={ver!r} != plugin.json {pin!r}")
     if all_errs:
         print("validate_skills FAIL")
         for e in all_errs:
             print(f" - {e}")
         return 1
-    print(f"validate_skills PASS n={len(dirs)}")
+    print(f"validate_skills PASS n={len(dirs)} pin={pin}")
     return 0
 
 

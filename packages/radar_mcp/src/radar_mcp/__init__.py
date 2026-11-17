@@ -1,3 +1,3 @@
 """Read-only MCP for DUP Market Radar — no trade mutations."""
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
