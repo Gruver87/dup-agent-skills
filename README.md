@@ -7,6 +7,8 @@
 
 Installable skills + optional read-only MCP for crypto **market ops** — not a trading bot, not an L1, **not financial advice**.
 
+**Beginner?** → [`docs/START_HERE.md`](docs/START_HERE.md)
+
 | Repo | Role |
 |------|------|
 | [`dup-market-radar`](https://github.com/Gruver87/dup-market-radar) | Watchlist / KuCoin spot ops (PWA + Telegram) |
